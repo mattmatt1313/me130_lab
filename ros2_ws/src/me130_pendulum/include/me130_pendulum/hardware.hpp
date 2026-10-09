@@ -23,7 +23,7 @@ namespace me130
 
 // Wiring, matching the BD65496MUV in EN/IN mode.
 inline constexpr int kGpioPs = 24;      // HIGH = driver active, LOW = coast
-inline constexpr int kGpioDir = 25;     // INB
+inline constexpr int kGpioDir = 5;     // Changed from 25
 inline constexpr int kGpioEncA = 17;
 inline constexpr int kGpioEncB = 27;
 inline constexpr int kPwmChannel = 0;   // INA, GPIO18

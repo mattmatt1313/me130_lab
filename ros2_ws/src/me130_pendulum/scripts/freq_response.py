@@ -107,7 +107,8 @@ def unwrap_phase_deg(phase_rad):
     """
     wrapped = np.angle(np.exp(1j * np.asarray(phase_rad, dtype=float)))  # -> (-pi, pi]
     ph = np.degrees(np.unwrap(wrapped))
-    return ph - 360.0 * np.round(ph[0] / 360.0)
+    ##return ph - 360.0 * np.round(ph[0] / 360.0)
+    return ph - 180.0
 
 
 def phase_ticks(*arrays):

@@ -252,13 +252,13 @@ def main():
         tf = forced["t_s"].to_numpy()
         yf_raw = forced["theta_rad"].to_numpy()
         yf = yf_raw * sign
-        ax_f.plot(tf - tf[0], np.degrees(yf), color=color, linewidth=1.5,
+        ax_f.plot(tf - tf[0], -np.degrees(yf), color=color, linewidth=1.5,
                   label=label, zorder=3)
 
         # Shift to where the step started, divide by the duty that drove it. A
         # linear plant collapses every step onto one curve; spread is nonlinearity.
         norm = np.degrees(yf_raw - yf_raw[0]) / duty
-        ax_nf.plot(tf - tf[0], norm, color=color, linewidth=1.4,
+        ax_nf.plot(tf - tf[0], -norm, color=color, linewidth=1.4,
                    label=label, zorder=3)
         norm_ss = float(np.mean(norm[-min(150, len(norm)):]))
 
@@ -268,14 +268,14 @@ def main():
             tr = free["t_s"].to_numpy()
             yr_raw = free["theta_rad"].to_numpy()
             yr = yr_raw * sign
-            ax_r.plot(tr - tr[0], np.degrees(yr), color=color, linewidth=1.5,
+            ax_r.plot(tr - tr[0], -np.degrees(yr), color=color, linewidth=1.5,
                       label=label, zorder=3)
             peak_free = np.degrees(np.abs(yr).max())
 
             # Same treatment as the forced panel. The release mirrors the step,
             # so these collapse too, settling at minus the forced steady state.
             norm_free = np.degrees(yr_raw - yr_raw[0]) / duty
-            ax_nr.plot(tr - tr[0], norm_free, color=color, linewidth=1.4,
+            ax_nr.plot(tr - tr[0], -norm_free, color=color, linewidth=1.4,
                        label=label, zorder=3)
             norm_free_ss = float(np.mean(norm_free[-min(150, len(norm_free)):]))
 
